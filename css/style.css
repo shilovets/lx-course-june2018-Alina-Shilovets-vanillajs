@@ -1,37 +1,39 @@
-@import url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 body {
     background: linear-gradient(to bottom, #aac5e0, #ffffff) no-repeat;
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
-    zoom: .9;
+    zoom: .837;
 }
 ::-webkit-scrollbar{width: 15px;height: 5px;}
 ::-webkit-scrollbar-track-piece{background-color: #ffffff;}
 ::-webkit-scrollbar-thumb:vertical{height: 5px;background-color: #b1b1b1;}
+
+/* main container*/
 .wrapper {
-    max-width: 1300px;
+    width: 85%;
+    height: 100%;
     background-color: #FFF;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     /*line-height: 1.65;*/
 }
-aside{
+.content {
+    flex: 1;
+    display: flex;
+}
+
+/*master block*/
+.master{
     width: 25%;
     border-right: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
-}
-main{
-    width: 75%;
-}
-.scroll {
-    max-height: 767px;
-    display: inline-block;
-    padding: 0;
-    overflow-x: hidden;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
 }
 
-.content {
-    display: flex;
-}
+/*back block*/
 .orders-back {
     padding: 0 15px;
     display: flex;
@@ -49,31 +51,49 @@ main{
     font-size: 19px;
     color: #666b64;
 }
+
+/*search block*/
 .orders-search {
     margin: 10px 3px 10px 5px;
     border: 1px solid #c1c1c1;
+    height: 30px;
     display: flex;
+    align-content: space-between;
     align-items: center;
 }
-input[type="search"] {
+.orders-search input[type="search"] {
+    flex: 5;
+    width: 85%;
     border: none;
     color: #363533;
-    font-size: 14px ;
+    font-size: 15px ;
     font-style: oblique;
     padding-left: 10px;
-    flex: 4;
 }
 .search-icons {
     flex: 1;
-    margin-left: 50px;
+    width: 15%;
+    margin-right: 5px;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: nowrap;
 }
 .search-icons i {
+    flex: 1;
     font-size: 15px;
     color: #427da9;
     padding: 4px;
 }
-.order-number {
 
+/*order list block*/
+/*scroll for order list*/
+.scroll-orders {
+    max-height: 767px;
+    display: inline-block;
+    padding: 0;
+    overflow-x: hidden;
+}
+.order {
     display: flex;
     padding: 10px 10px;
     flex-direction: row;
@@ -111,18 +131,26 @@ input[type="search"] {
     font-size: 23px;
     margin: 0;
 }
-.order-number:hover {
+.order:hover {
     background: #e8eff7;
     cursor: pointer;
 }
-.green {
+.status-intime {
     color: #327c31;
 }
-.red {
+.status-urgent {
     color: #f09401;
 }
 
-.main-paragraph {
+/*detail block*/
+.detail {
+    width: 75%;
+    min-width: 630px;
+    display: flex;
+    flex-direction: column;
+}
+/* full order information*/
+.detail-main-paragraph {
     margin: 0;
     padding-bottom: 10px;
     font-size: 19px;
@@ -131,44 +159,17 @@ input[type="search"] {
     background: #eff4f8;
     border-bottom: 1px solid #d0e0ed;
 }
-footer {
-    background: #2f3b47;
-    display: flex;
-}
-.order-number-footer {
-    width: 25%;
-    border-right: 1px solid #ebebeb;
-    display: flex;
-    justify-content: flex-end;
-}
-.order-footer {
-    width: 75%;
-    display: flex;
-    justify-content: flex-end;
-}
-.order-number-footer i {
-    color: #c3e4ff;
-    font-size: 15px;
-    margin: 10px 15px;
-}
-.fa-envelope {
-    color: #c3e4ff;
-    font-size: 15px;
-    margin: 10px 15px;
-}
 .order-full-info {
     background: #eff4f8;
     padding: 45px 30px;
     border-bottom: 2px solid #cedeeb;
     height: 190px;
     display: flex;
-
 }
 .order-full-info-main p {
     color: #5a6561;
     font-size: 13px;
     margin: 10px 0;
-
 }
 .order-full-info p:first-child {
     font-size: 27px;
@@ -176,7 +177,6 @@ footer {
     margin-bottom: 18px;
     margin-top: 0;
 }
-
 .fa-truck {
     border: 1px solid #4d7bac;
     border-radius: 100px;
@@ -184,13 +184,13 @@ footer {
     color: #437fa3;
     font-size: 22px;
 }
-.truck {
+.tab-shipping-info {
     position: absolute;
     width: 57px;
-    height: 72.5px;
+    height: 69.5px;
     margin-top: 31.5px;
 }
-.truck:hover {
+.tab-shipping-info:hover {
     cursor: pointer;
     border-bottom: 2px solid #4d7bac;
 }
@@ -201,18 +201,18 @@ footer {
 .fa-user {
     border: 1px solid #4d7bac;
     border-radius: 100px;
-    padding: 15px 18px;
+    padding: 15px 17px;
     color: #437fa3;
     font-size: 22px;
 }
-.user {
+.tab-personal-info {
     position: absolute;
     width: 57px;
-    height: 72.5px;
+    height: 69.5px;
     margin-top: 31.5px;
     margin-left: 90px;
 }
-.user:hover {
+.tab-personal-info:hover {
     cursor: pointer;
     border-bottom: 2px solid #4d7bac;
 }
@@ -225,18 +225,28 @@ footer {
 }
 .order-full-info-coast{
     flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
-#paragraph-euro{
-    margin:0 4px;
+#paragraph-coast {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+#paragraph-currency{
     text-align: right;
     color: #5c6471;
 }
 .order-full-info-coast p:first-child {
     margin: 0;
 }
+
+/*information about shipping address*/
 .shipping-address {
     border-bottom: 2px solid #cedeeb;
-    padding: 9px 30px;
+    padding: 0 30px;
+    background: white;
 }
 .shipping-address-title {
     color: #2e353f;
@@ -244,16 +254,41 @@ footer {
     padding-bottom: 15px;
     border-bottom: 1px solid #cecece;
 }
-.shipping-address-table {
+.shipping-address-info {
     font-size: 13px;
-    margin-left: 115px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 115px ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
-.shipping-address-table tr td:first-child{
-    color: #5e5f62;
+.shipping-address-info-label {
+    margin-top: 10px;
+    flex: 1 1 100px;
+    font-size: 16px;
+}
+.shipping-address-info-label label {
+    display: block;
     text-align: right;
-    padding-right: 10px;
+    height: 18px;
+    margin-bottom: 5px;
 }
+.shipping-address-info-input {
+    margin-top: 10px;
+    margin-left: 10px;
+    flex: 5 1 200px;
+}
+.shipping-address-info-input input {
+    display: block;
+    width: 100%;
+    border-width: 0;
+    height: 18px;
+    font-size: 16px;
+    color: inherit;
+    font-weight: inherit;
+    margin-bottom: 3.7px
+}
+/*table of line items*/
 .line-items {
     margin: 0;
     padding: 20px 30px 6px 30px;
@@ -289,4 +324,37 @@ footer {
     text-align: left;
 }
 
+/*FOOTER*/
+footer {
+    position: fixed;
+    width: 85%;
+    height: 30px;
+    bottom: 0;
+    background: #2f3b47;
+    display: flex;
+}
+/*footer of master block*/
+.master-footer {
+    width: 25%;
+    border-right: 1px solid #ebebeb;
+    display: flex;
+    justify-content: flex-end;
+}
+.master-footer i {
+    color: #c3e4ff;
+    font-size: 15px;
+    margin: 10px 15px;
+}
+
+/*detail footer*/
+.detail-footer {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+}
+.fa-envelope {
+    color: #c3e4ff;
+    font-size: 15px;
+    margin: 10px 15px;
+}
 
