@@ -159,11 +159,13 @@ body {
     background: #eff4f8;
     border-bottom: 1px solid #d0e0ed;
 }
-.order-full-info {
+.order-title {
     background: #eff4f8;
     padding: 45px 30px;
     border-bottom: 2px solid #cedeeb;
     height: 190px;
+}
+.order-full-info {
     display: flex;
 }
 .order-full-info-main p {
@@ -315,8 +317,8 @@ body {
     padding: 0 15px;
 }
 .line-items-table tr:first-child {
-     background: #f7f7f7 ;
- }
+    background: #f7f7f7 ;
+}
 .line-items-table tr {
     background: #ffffff;
 }
